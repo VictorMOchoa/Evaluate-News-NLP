@@ -18,6 +18,7 @@ var textapi = new aylien({
 console.log(__dirname)
 
 app.get('/', function (req, res) {
+  // for prod...
     // res.sendFile('dist/index.html')
     res.sendFile(path.resolve('src/client/views/index.html'))
 })
