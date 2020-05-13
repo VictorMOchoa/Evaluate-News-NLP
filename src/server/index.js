@@ -4,9 +4,10 @@ dotenv.config();
 var path = require('path')
 var aylien = require("aylien_textapi")
 const express = require('express')
-const mockAPIResponse = require('./mockAPI.js')
+// const mockAPIResponse = require('./mockAPI.js')
 
 const app = express()
+app.use(express.json());
 const cors = require('cors')
 app.use(cors())
 app.use(express.static('dist'))
@@ -30,6 +31,14 @@ app.listen(8081, function () {
 })
 
 app.post('/getSentiment', function (req, res) {
-      console.log(req.body)
-    res.send(mockAPIResponse)
+  let url = req.body.urlFromInput;
+  return textapi.sentiment( { 'url': url },
+    (error, response) => {
+      if (error) {
+        console.log("Received an error: ")
+        return error;
+      } else {
+        res.send(response);
+      }
+  });
 })
