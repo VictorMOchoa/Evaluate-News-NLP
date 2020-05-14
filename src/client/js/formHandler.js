@@ -14,10 +14,16 @@ function handleSubmit(event) {
       })
       .then(res => res.json())
       .then(function(res) {
-        console.log("about to print res")
-        console.log(res)
-          document.getElementById('results').innerHTML = res.message
+        let polarityPercentage = (res.polarity_confidence*100).toFixed(1);
+        let subjectivityPercentage = (res.subjectivity_confidence*100).toFixed(1);
+          document.getElementById('results').innerHTML = `<div>
+            <br>
+            <center><b>Polarity: </b> ${res.polarity} (${polarityPercentage}%)</center>
+            <center><b>Subjectivity: </b> ${res.subjectivity} (${subjectivityPercentage}%)</center>
+            </div>`;
       })
+
+      document.getElementById('name').value = '';
     }
 }
 

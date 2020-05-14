@@ -4,7 +4,7 @@ dotenv.config();
 var path = require('path')
 var aylien = require("aylien_textapi")
 const express = require('express')
-// const mockAPIResponse = require('./mockAPI.js')
+const mockAPIResponse = require('./mockAPI.js')
 
 const app = express()
 app.use(express.json());
