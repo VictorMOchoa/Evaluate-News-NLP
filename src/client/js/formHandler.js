@@ -24,6 +24,8 @@ function handleSubmit(event) {
       })
 
       document.getElementById('name').value = '';
+    } else {
+      console.log("Can not update view as input is not a valid URL.")
     }
 }
 

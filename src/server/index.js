@@ -20,9 +20,7 @@ var textapi = new aylien({
 console.log(__dirname)
 
 app.get('/', function (req, res) {
-  // for prod...
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile('dist/index.html')
 })
 
 // designates what port the app will listen to for incoming requests
@@ -35,7 +33,8 @@ app.post('/getSentiment', function (req, res) {
   return textapi.sentiment( { 'url': url },
     (error, response) => {
       if (error) {
-        console.log("Received an error: ")
+        console.log("Received an error")
+        console.log(error)
         return error;
       } else {
         res.send(response);
